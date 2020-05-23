@@ -1,14 +1,14 @@
-import * as actionTypes from "./actionTypes";
-import Show from "../api/show-service";
+import * as actionTypes from './actionTypes';
+import Show from '../api/show-service';
 
-export const getShow = (showId) => async (dispatch) => {
+export const getEpisodes = showId => async dispatch => {
   try {
     dispatch({
       type: actionTypes.SET_LOADING_TRUE,
     });
-    const response = await Show.getShow(showId);
+    const response = await Show.getEpisodes(showId);
     dispatch({
-      type: actionTypes.GET_SHOW,
+      type: actionTypes.GET_EPISODES,
       payload: response.data,
     });
   } catch (error) {

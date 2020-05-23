@@ -1,11 +1,13 @@
-import { GET_SHOW } from "../actions/actionTypes";
+import { SELECT_SHOW, GET_EPISODES } from '../actions/actionTypes';
 
-const initialState = {};
+const initialState = { id: null, episodes: [] };
 
 export default function (state = initialState, action) {
   switch (action.type) {
-    case GET_SHOW:
-      return action.payload;
+    case SELECT_SHOW:
+      return Object.assign({}, state, { id: action.payload });
+    case GET_EPISODES:
+      return Object.assign({}, state, { episodes: action.payload });
     default:
       return state;
   }

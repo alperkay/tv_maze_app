@@ -1,6 +1,6 @@
-import axios from "axios";
+import axios from 'axios';
 
-const BASE_PATH = "http://api.tvmaze.com";
+const BASE_PATH = 'http://api.tvmaze.com';
 
 class Show {
   async getShow(showId) {
@@ -16,17 +16,26 @@ class Show {
     try {
       const data = { shows: [], errors: [] };
       await Promise.all(
-        favorites.map(async (showId) => {
+        favorites.map(async showId => {
           await this.getShow(showId)
-            .then((show) => {
+            .then(show => {
               data.shows.push(show.data);
             })
-            .catch((err) => {
+            .catch(err => {
               data.errors.push(err);
             });
         })
       );
       return data;
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  async getEpisodes(showId) {
+    try {
+      const response = await axios.get(`${BASE_PATH}/shows/${showId}/episodes`);
+      return response;
     } catch (err) {
       throw err;
     }

@@ -6,6 +6,7 @@ import { getFavoriteShows } from './actions/getFavoriteShowsAction';
 import Header from './components/Header';
 import FavoriteShowsList from './components/FavoriteShowsList';
 import ShowDetails from './components/ShowDetails';
+import EpisodeDetails from './components/EpisodeDetails';
 
 import './App.scss';
 
@@ -26,7 +27,13 @@ function App() {
         </header>
         <main>
           <Route exact path='/' component={FavoriteShowsList} />
+          <Route exact path='/favorite-shows' component={FavoriteShowsList} />
           <Route exact path='/favorite-shows/:id' component={ShowDetails} />
+          <Route
+            exact
+            path='/favorite-shows/:showId/episodes/:episodeId'
+            component={EpisodeDetails}
+          />
         </main>
       </div>
     </Router>

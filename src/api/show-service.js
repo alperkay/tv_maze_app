@@ -11,6 +11,26 @@ class Show {
       throw err;
     }
   }
+
+  async getFavorites(favorites) {
+    try {
+      const data = { shows: [], errors: [] };
+      await Promise.all(
+        favorites.map(async (showId) => {
+          await this.getShow(showId)
+            .then((show) => {
+              data.shows.push(show.data);
+            })
+            .catch((err) => {
+              data.errors.push(err);
+            });
+        })
+      );
+      return data;
+    } catch (err) {
+      throw err;
+    }
+  }
 }
 
 export default new Show();

@@ -1,12 +1,13 @@
-import React from 'react';
-import './App.scss';
-
+import React, { useEffect } from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { useEffect } from 'react';
 import { getFavoriteShows } from './actions/getFavoriteShowsAction';
 
-import FavoriteShowsList from './components/FavoriteShowsList';
 import Header from './components/Header';
+import FavoriteShowsList from './components/FavoriteShowsList';
+import ShowDetails from './components/ShowDetails';
+
+import './App.scss';
 
 function App() {
   const favoriteShows = useSelector(state => state.favoriteShows.list);
@@ -18,14 +19,17 @@ function App() {
   }, [dispatch, favoriteShows]);
 
   return (
-    <div className='App'>
-      <header>
-        <Header />
-      </header>
-      <main>
-        <FavoriteShowsList />
-      </main>
-    </div>
+    <Router>
+      <div className='App'>
+        <header>
+          <Header />
+        </header>
+        <main>
+          <Route exact path='/' component={FavoriteShowsList} />
+          <Route exact path='/favorite-shows/:id' component={ShowDetails} />
+        </main>
+      </div>
+    </Router>
   );
 }
 

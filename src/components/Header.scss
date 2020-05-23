@@ -1,0 +1,20 @@
+.header {
+  width: 100%;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  &__logo,
+  &__title {
+    margin: 0;
+  }
+  background-color: black;
+  &__logo {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+  }
+  &__title {
+    margin-top: 10px;
+  }
+}

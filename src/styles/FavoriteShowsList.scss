@@ -17,5 +17,8 @@
     &:hover {
       transform: scale(1.05);
     }
+    &__title {
+      font-weight: bold;
+    }
   }
 }

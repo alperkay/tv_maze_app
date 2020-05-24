@@ -11,7 +11,8 @@
   &__image,
   &__title,
   &__play-button,
-  &__navigation {
+  &__navigation,
+  &__season-selector {
     margin-bottom: 10px;
   }
 
@@ -35,6 +36,10 @@
       transform: translate(0, -2px);
       box-shadow: 3px 4px 5px 0px rgba(0, 0, 0, 0.46);
     }
+    &:active {
+      transform: translate(0, 0);
+      box-shadow: none;
+    }
   }
 
   &__navigation {
@@ -57,16 +62,27 @@
     text-align: justify;
     max-width: 500px;
   }
+  &__season-selector {
+    width: 210px;
+  }
   &__episode-list {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    text-align: left;
-
+    width: 210px;
+    font-size: 12px;
     &__item {
       display: flex;
-      justify-content: space-between;
       transition: all 0.2s;
+      margin-bottom: 10px;
+      text-align: left;
+
+      &__image {
+        width: 50px;
+      }
+      &__number {
+        width: 15px;
+        margin: 0 5px;
+      }
       &:hover {
         background-color: orange;
       }

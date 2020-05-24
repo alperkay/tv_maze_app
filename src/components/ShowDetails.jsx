@@ -12,23 +12,76 @@ import '../styles/ShowDetails.scss';
 
 function ShowDetails() {
   const [tab, setTab] = useState('info');
+  const [selectedSeason, setSelectedSeason] = useState(1);
 
   const { id } = useParams();
   const selectedShow = useSelector(state =>
     state.favoriteShows.shows.find(show => show.id.toString() === id)
   );
-  const episodeList = useSelector(state =>
-    state.selectedShow.episodes.map(episode => (
-      <Link to={`/favorite-shows/${id}/episodes/${episode.id}`}>
-        <li className='show-details__episode-list__item' key={episode.id}>
-          <span>
-            S{episode.season}E{episode.number}
-          </span>
-          {episode.name}
-        </li>
-      </Link>
-    ))
-  );
+
+  const groupedBySeason = useSelector(state => {
+    const { episodes } = state.selectedShow;
+    let groupedBySeason;
+    if (episodes.length > 0) {
+      const numberOfSeasons = episodes[episodes.length - 1].season;
+      groupedBySeason = Array.from({ length: numberOfSeasons }, (v, i) => {
+        return { season: i + 1, episodes: [] };
+      });
+      state.selectedShow.episodes.forEach(episode => {
+        const matchingSeason = groupedBySeason.find(
+          s => s.season === episode.season
+        );
+        matchingSeason && matchingSeason.episodes.push(episode);
+      });
+    }
+    return groupedBySeason;
+  });
+
+  console.log(groupedBySeason);
+
+  const seasonSelector = () => {
+    return (
+      <select
+        name='seasons'
+        onChange={e => setSelectedSeason(e.target.value)}
+        value={selectedSeason}
+        className='show-details__season-selector'
+      >
+        {groupedBySeason &&
+          groupedBySeason.map(s => (
+            <option key={s.season} value={s.season}>
+              Season {s.season}
+            </option>
+          ))}
+      </select>
+    );
+  };
+
+  const episodeList = () => {
+    return (
+      <ul className='show-details__episode-list'>
+        {groupedBySeason &&
+          groupedBySeason[selectedSeason - 1].episodes.map(episode => (
+            <Link
+              key={episode.name}
+              to={`/favorite-shows/${id}/episodes/${episode.id}`}
+            >
+              <li className='show-details__episode-list__item'>
+                <img
+                  className='show-details__episode-list__item__image'
+                  src={episode.image.medium}
+                  alt={episode.name}
+                />
+                <span className='show-details__episode-list__item__number'>
+                  {episode.number}.
+                </span>
+                <p>{episode.name}</p>
+              </li>
+            </Link>
+          ))}
+      </ul>
+    );
+  };
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -89,10 +142,9 @@ function ShowDetails() {
             dangerouslySetInnerHTML={createSummaryMarkup()}
           ></div>
         )}
-        {tab === 'episodes' && (
-          <ul className='show-details__episode-list'>{episodeList}</ul>
-        )}
-        {tab === 'cast' && <h1>cast</h1>}
+        {tab === 'episodes' && seasonSelector()}
+        {tab === 'episodes' && episodeList()}
+        {tab === 'cast' && <p>not implemented</p>}
       </div>
     );
   }

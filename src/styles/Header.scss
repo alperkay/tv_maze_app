@@ -6,10 +6,6 @@
   display: flex;
   justify-content: space-between;
   position: fixed;
-  background-color: black;
   padding: 10px;
-
-  @include respond(phone) {
-    background-color: red;
-  }
+  background-color: white;
 }

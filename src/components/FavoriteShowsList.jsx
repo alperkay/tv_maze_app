@@ -9,7 +9,12 @@ function FavoriteShowsList() {
     (show) => (
       <li key={show.id} className="favorite-shows-list__item">
         <Link to={`/favorite-shows/${show.id}`}>
-          <img src={show.image.medium} alt={show.name} />
+          <img
+            className="favorite-shows-list__item__image"
+            src={show.image.medium}
+            alt={show.name}
+          />
+          <p>{show.name}</p>
         </Link>
       </li>
     )

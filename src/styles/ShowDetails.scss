@@ -1,4 +1,4 @@
-@import "../styles/Main.scss";
+@import '../styles/Main.scss';
 
 .show-details {
   padding: 0 10px;
@@ -8,11 +8,33 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
+  &__image,
+  &__title,
+  &__play-button,
+  &__navigation {
+    margin-bottom: 10px;
+  }
+
   &__play-button {
     width: 210px;
     height: 26px;
     background-color: red;
     border-radius: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-weight: bold;
+    background-color: rgb(255, 197, 89);
+    &__text {
+      transition: all 0.2s;
+    }
+    &:hover {
+      background-color: orange;
+      transform: translate(0, -2px);
+      box-shadow: 3px 4px 5px 0px rgba(0, 0, 0, 0.46);
+    }
   }
 
   &__navigation {
@@ -20,6 +42,11 @@
     display: flex;
     justify-content: space-between;
     &__item {
+      cursor: pointer;
+      transition: all 0.2s;
+      &:hover {
+        color: orange;
+      }
     }
     .selected {
       color: orange;
@@ -29,5 +56,20 @@
   &__info {
     text-align: justify;
     max-width: 500px;
+  }
+  &__episode-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+
+    &__item {
+      display: flex;
+      justify-content: space-between;
+      transition: all 0.2s;
+      &:hover {
+        background-color: orange;
+      }
+    }
   }
 }

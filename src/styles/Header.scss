@@ -1,4 +1,4 @@
-@import "../styles/Main.scss";
+@import '../styles/Main.scss';
 
 .header {
   width: 100%;
@@ -8,4 +8,29 @@
   position: fixed;
   padding: 10px;
   background-color: white;
+
+  &__title,
+  &__logo {
+    cursor: pointer;
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+  &__title {
+    &__icon {
+      margin-right: 6px;
+    }
+  }
+  &__logo {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    @include respond(phone) {
+      position: relative;
+      // top: unset;
+      left: unset;
+      transform: unset;
+    }
+  }
 }

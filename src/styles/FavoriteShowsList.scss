@@ -1,17 +1,21 @@
-@import "../styles/Main.scss";
+@import '../styles/Main.scss';
 
 .favorite-shows-list {
-  margin: auto;
+  margin: 0 auto;
+  margin-top: 32px;
   width: 90%;
-  height: 100%;
-  list-style: none;
-  display: flex;
-  justify-content: flex-start;
-  flex-wrap: wrap;
-  padding: 5px;
-  padding-top: 32px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, max-content));
+  grid-gap: 15px;
+  justify-items: center;
+  justify-content: center;
 
   &__item {
-    margin: 5px auto;
+    display: flex;
+    justify-content: center;
+    transition: 0.5s all;
+    &:hover {
+      transform: scale(1.05);
+    }
   }
 }

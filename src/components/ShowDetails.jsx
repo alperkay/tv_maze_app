@@ -19,6 +19,7 @@ function ShowDetails() {
     state.favoriteShows.shows.find(show => show.id.toString() === id)
   );
 
+  // reorganize the episodes per season in an array of "season" objects
   const groupedBySeason = useSelector(state => {
     const { episodes } = state.selectedShow;
     let groupedBySeason;
@@ -37,8 +38,7 @@ function ShowDetails() {
     return groupedBySeason;
   });
 
-  console.log(groupedBySeason);
-
+  // select element for seasons
   const seasonSelector = () => {
     return (
       <select

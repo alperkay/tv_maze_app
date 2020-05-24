@@ -29,6 +29,7 @@ function Header() {
     }
   }, [location]);
 
+  // for navigating back inside the app
   function goBack() {
     switch (page) {
       case 'episodes':

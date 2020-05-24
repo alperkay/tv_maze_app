@@ -1,10 +1,33 @@
 @import "../styles/Main.scss";
 
 .show-details {
+  padding: 0 10px;
   padding-top: 32px;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
+  &__play-button {
+    width: 210px;
+    height: 26px;
+    background-color: red;
+    border-radius: 1px;
+  }
+
+  &__navigation {
+    width: 210px;
+    display: flex;
+    justify-content: space-between;
+    &__item {
+    }
+    .selected {
+      color: orange;
+      border-bottom: 2px solid orange;
+    }
+  }
+  &__info {
+    text-align: justify;
+    max-width: 500px;
+  }
 }

@@ -1,7 +1,13 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
 }
 
 a,
@@ -14,6 +20,10 @@ a:hover {
 
 li {
   list-style-type: none;
+}
+
+button {
+  border: none;
 }
 
 .App {

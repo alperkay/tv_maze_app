@@ -1,4 +1,4 @@
-@import '../styles/Main.scss';
+@import "../styles/Main.scss";
 
 .header {
   width: 100%;
@@ -28,7 +28,6 @@
     transform: translateX(-50%);
     @include respond(phone) {
       position: relative;
-      // top: unset;
       left: unset;
       transform: unset;
     }

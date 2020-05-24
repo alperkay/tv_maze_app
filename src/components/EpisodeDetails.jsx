@@ -17,13 +17,16 @@ function EpisodeDetails() {
     return { __html: selectedEpisode.summary };
   }
 
-  return (
-    <div className="episode-details">
-      <h1>{selectedEpisode.name}</h1>
-      <img src={selectedEpisode.image.medium} alt={selectedEpisode.name} />
-      <div dangerouslySetInnerHTML={createSummaryMarkup()}></div>
-    </div>
-  );
+  if (selectedEpisode) {
+    return (
+      <div className="episode-details">
+        <h1>{selectedEpisode.name}</h1>
+        <img src={selectedEpisode.image.medium} alt={selectedEpisode.name} />
+        <div dangerouslySetInnerHTML={createSummaryMarkup()}></div>
+      </div>
+    );
+  }
+  return null;
 }
 
 export default EpisodeDetails;

@@ -13,6 +13,8 @@ The episode detail page contains:
 2. Episode Summary
 3. Episode cover image
 
+The app is designed with "mobile-first" approach in mind.
+
 Possible features / improvements considered for the future:
 
 1. Search functionality (user will be able to search for a show)
@@ -22,6 +24,7 @@ Possible features / improvements considered for the future:
 5. In terms of scalability and code maintenance, some components (especially ShowDetails.jsx) should be divided into smaller parts
 6. As the app gets larger, use Typescript to ensure type safety
 7. Testing
+8. Using utility classes and variables for repetitive styling
 
 Libraries and technologies used in the app are React, Redux, Axios, Sass/Scss, and Font Awesome.
 
